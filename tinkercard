@@ -1,0 +1,59 @@
+codigo do tinkercad: int sensorTemp = A0;
+int sensorLuz = A1;
+int sensorUmidade = A2;
+
+int ledVerde = 8;
+int ledAmarelo = 9;
+int ledVermelho = 10;
+int buzzer = 11;
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(ledVerde, OUTPUT);
+  pinMode(ledAmarelo, OUTPUT);
+  pinMode(ledVermelho, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+}
+
+void loop() {
+  int leituraTemp = analogRead(sensorTemp);
+  int leituraLuz = analogRead(sensorLuz);
+  int leituraUmidade = analogRead(sensorUmidade);
+
+  float voltagem = leituraTemp * 5.0 / 1023.0;
+  float temperatura = (voltagem - 0.5) * 100;
+
+  int umidade = map(leituraUmidade, 0, 1023, 0, 100);
+  int luminosidade = map(leituraLuz, 0, 1023, 0, 100);
+
+  Serial.print("Temperatura: ");
+  Serial.print(temperatura);
+  Serial.print(" C | Umidade: ");
+  Serial.print(umidade);
+  Serial.print("% | Luminosidade: ");
+  Serial.print(luminosidade);
+  Serial.println("%");
+
+  digitalWrite(ledVerde, LOW);
+  digitalWrite(ledAmarelo, LOW);
+  digitalWrite(ledVermelho, LOW);
+  noTone(buzzer);
+
+  if (temperatura < 30 && umidade > 50) {
+    digitalWrite(ledVerde, HIGH);
+    Serial.println("STATUS: SEGURO");
+  } 
+  else if ((temperatura >= 30 && temperatura <= 40) || (umidade >= 25 && umidade <= 50)) {
+    digitalWrite(ledAmarelo, HIGH);
+    Serial.println("STATUS: ATENCAO");
+  } 
+  else {
+    digitalWrite(ledVermelho, HIGH);
+    tone(buzzer, 1000);
+    Serial.println("STATUS: RISCO AMBIENTAL");
+  }
+
+  Serial.println("-------------------------");
+  delay(1500);
+}
