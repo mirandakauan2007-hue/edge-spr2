@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "author": "OrbitEye",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -120,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": -80,
+      "left": 420,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledYellow",
+      "top": -20,
+      "left": 420,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRed",
+      "top": 40,
+      "left": 420,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": 120,
+      "left": 420,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "dht1:VCC", "uno:5V", "red", [] ],
+    [ "dht1:GND", "uno:GND.1", "black", [] ],
+    [ "dht1:SDA", "uno:2", "green", [] ],
+
+    [ "ledGreen:A", "uno:8", "green", [] ],
+    [ "ledGreen:C", "uno:GND.2", "black", [] ],
+
+    [ "ledYellow:A", "uno:9", "yellow", [] ],
+    [ "ledYellow:C", "uno:GND.2", "black", [] ],
+
+    [ "ledRed:A", "uno:10", "red", [] ],
+    [ "ledRed:C", "uno:GND.2", "black", [] ],
+
+    [ "buzzer1:1", "uno:11", "blue", [] ],
+    [ "buzzer1:2", "uno:GND.2", "black", [] ]
+  ]
+}
