@@ -1,4 +1,4 @@
-codigo do tinkercad: int sensorTemp = A0;
+int sensorTemp = A0;
 int sensorLuz = A1;
 int sensorUmidade = A2;
 
