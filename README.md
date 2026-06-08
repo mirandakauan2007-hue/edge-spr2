@@ -206,6 +206,14 @@ OrbitEye/
 [![Assista o vídeo](https://img.youtube.com/vi/SqhtKeaVhUM/0.jpg)](https://youtu.be/SqhtKeaVhUM)
 
 ---
+## Projeto Tinkercad
+
+🔗 Simulação do circuito:
+https://www.tinkercad.com/things/SEU-LINK-AQUI
+
+## Código Arduino
+
+O projeto foi feito para monitoramento de temperatura, luz e umidade com LEDs e buzzer.
 
 ## Conclusão
 
